@@ -28,3 +28,38 @@ var addTwoNumbers = function(l1, l2) {
   }
   return head.next;
 }
+
+// test
+var num1 = '2432432432432432432432432432432432432432432432432432432432439';
+var num2 = '5642432432432432432432432432432432432432432432432432432439999';
+
+function ListNode(val) {
+  this.val = val;
+  this.next = null;
+}
+
+var l1 = new ListNode(2);
+var l2 = new ListNode(5);
+
+var nextNode = l1;
+for (var i = 1, len = num1.length; i < len; i++) {
+  var node = new ListNode(num1.charAt(i));
+  nextNode.next = node;
+  nextNode = node;
+}
+
+var nextNode = l2;
+for (var i = 1, len = num2.length; i < len; i++) {
+  var node = new ListNode(num2.charAt(i));
+  nextNode.next = node;
+  nextNode = node;
+}
+
+var node = addTwoNumbers(l1, l2);
+var result = [];
+while (node) {
+  result.push(node.val);
+  node = node.next;
+}
+
+console.log(result.join('')); // Expect: 70848648648648648648648648648648648648648648648648648648614391
